@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container row border-primary m-auto mt-3">
+        <h3 class="card-header text-center text-bg-secondary p-auto">Cybalbully Detector</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <textarea class="form-control" name="message" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Text Goes Here...</label>
+            </div>
+            <div class="mb-3">
+                <select name="choose" class="form-select form-select-lg mb-2">
+                    <option value="choose" selected>Select a Model</option>
+                    <option value="LogisticRegression">LogisticRegression</option>
+                    <option value="naiveBayes">Naive Bayes</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Check</button>
+        </form>
+
+        <h3>Result: {% if prediction %} <p>{{prediction}}</p>{% endif %}</h3>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
